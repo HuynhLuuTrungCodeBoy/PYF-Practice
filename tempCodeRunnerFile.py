@@ -1,0 +1,1 @@
+turtle.circle(-70, steps=3)
