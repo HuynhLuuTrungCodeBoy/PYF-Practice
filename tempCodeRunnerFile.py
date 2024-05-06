@@ -1,1 +1,2 @@
-turtle.circle(-70, steps=3)
+# Kết thúc tô màu
+    t.end_fill()
