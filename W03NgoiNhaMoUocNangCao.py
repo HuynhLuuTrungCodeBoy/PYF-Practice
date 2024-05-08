@@ -68,36 +68,41 @@ def draw_rectangle(OutLineColor, FillColor, PenSize, Height, Width, x, y):
     # Kết thúc chương trình
     # turtle.done()
 
-# # Sử dụng hàm để vẽ tường và cửa
-# draw_rectangle("blue", "white", 3, 150, 250, -150, 0)
-# draw_rectangle("brown", "white", 3, 90, 50, -50, -50)
+# Sử dụng hàm để vẽ tường và cửa
+draw_rectangle("blue", "white", 3, 150, 250, -150, 0)
+draw_rectangle("brown", "white", 3, 90, 50, -50, -50)
 
-# # Vẽ ống khói
-# draw_rectangle("blue", "white", 2, 50, 30, -30, 65)
+# Vẽ ống khói
+draw_rectangle("blue", "white", 2, 50, 30, -30, 65)
 
-# #vẽ mái nhà
-# turtle.hideturtle()
-# turtle.penup()
-# #turtle.goto(-63,150)
-# turtle.goto(-150, 0)
-# turtle.pendown()
-# turtle.pensize(3)
-# turtle.fillcolor("white")
-# turtle.pencolor("blue")
-# turtle.begin_fill()
-# #turtle.circle(-100,steps=3)
-# turtle.left(45)
-# turtle.forward(115)
-# turtle.right(90)
-# turtle.forward(115)
-# turtle.end_fill()
+#vẽ mái nhà
+turtle.hideturtle()
+turtle.penup()
+#turtle.goto(-63,150)
+turtle.goto(-150, 0)
+turtle.pendown()
+turtle.pensize(3)
+turtle.fillcolor("white")
+turtle.pencolor("blue")
+turtle.begin_fill()
+#turtle.circle(-100,steps=3)
+turtle.left(45)
+turtle.forward(115)
+turtle.right(90)
+turtle.forward(115)
+turtle.end_fill()
 
-# #vẽ khói
-# draw_rectangle("gray", "gray", 1, 50, 1, -5, 130)
-# draw_rectangle("gray", "gray", 1, 30, 1, -20, 115)
+#vẽ khói
+draw_rectangle("gray", "gray", 1, 50, 1, -5, 130)
+draw_rectangle("gray", "gray", 1, 30, 1, -20, 115)
 
-# Sử dụng hàm để vẽ hình thang cân
-draw_trapezoid(200, 100, 75, "blue", "yellow", 3, -75, -50)
+# Vẽ cây thông lớn
+draw_trapezoid(50, 30, 90, "#808080", "#808080", 3, 175, -250) #chân cây thông
+draw_trapezoid(160, 0, 70, "#4E6028", "#4E6028", 3, 120, -160) # tán dưới
+draw_trapezoid(120, 0, 50, "#76923C", "#76923C", 3, 140, -90) # tán giữa
+draw_trapezoid(100, 0, 30, "#C2D59B", "#C2D59B", 3, 150, -40) # tán trên
+
+# vẽ cây thông nhỏ
 
 # Kết thúc chương trình
 turtle.done()
