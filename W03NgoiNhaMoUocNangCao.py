@@ -99,10 +99,13 @@ draw_rectangle("gray", "gray", 1, 30, 1, -20, 115)
 # Vẽ cây thông lớn
 draw_trapezoid(50, 30, 90, "#808080", "#808080", 3, 175, -250) #chân cây thông
 draw_trapezoid(160, 0, 70, "#4E6028", "#4E6028", 3, 120, -160) # tán dưới
-draw_trapezoid(120, 0, 50, "#76923C", "#76923C", 3, 140, -90) # tán giữa
-draw_trapezoid(100, 0, 30, "#C2D59B", "#C2D59B", 3, 150, -40) # tán trên
+draw_trapezoid(120, 0, 50, "#76923C", "#76923C", 3, 140, -100) # tán giữa
+draw_trapezoid(100, 0, 30, "#C2D59B", "#C2D59B", 3, 150, -53) # tán trên
 
 # vẽ cây thông nhỏ
-
+draw_trapezoid(30, 20, 65, "#808080", "#808080", 3, -210, -160) #chân cây thông
+draw_trapezoid(80, 0, 35, "#4E6028", "#4E6028", 3, -235, -95) # tán dưới
+draw_trapezoid(60, 0, 25, "#76923C", "#76923C", 3, -225, -65) # tán giữa
+draw_trapezoid(40, 0, 15, "#C2D59B", "#C2D59B", 3, -215, -40) # tán trên
 # Kết thúc chương trình
 turtle.done()
