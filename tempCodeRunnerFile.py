@@ -1,2 +1,2 @@
-# Kết thúc tô màu
-    t.end_fill()
+0, 90, "#808080", "#808080", 3, 175, -250) #chân cây thông
+# t.forward(500)

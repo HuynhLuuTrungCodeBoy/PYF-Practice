@@ -1,10 +1,10 @@
 import turtle
 import numpy
 #######################
-def draw_trapezoid(base1, base2, height, OutLineColor, FillColor, PenSize, x, y):#base1 là đáy lớn; x,y : toạ độ bên trái đáy lớn.
-    t = turtle.Turtle()
-    t.hideturtle()
+#khởi tạo con rùa t; ẩn con rùa t   ;Tốc độ vẽ nhanh tối đa
+t = turtle.Turtle(); t.hideturtle() ;t.speed(0)
 
+def draw_trapezoid(base1, base2, height, OutLineColor, FillColor, PenSize, x, y):#base1 là đáy lớn; x,y : toạ độ bên trái đáy lớn.
     # Thiết lập các thuộc tính hình thức
     t.color(OutLineColor)
     t.fillcolor(FillColor)
@@ -29,6 +29,7 @@ def draw_trapezoid(base1, base2, height, OutLineColor, FillColor, PenSize, x, y)
     t.forward(base2)
     t.left(a)
     t.forward(huyen)
+    t.left(180-a)## Để con trỏ luôn hướng phải sau khi vẽ xong.
 
     # Kết thúc tô màu
     t.end_fill()
@@ -39,9 +40,6 @@ def draw_trapezoid(base1, base2, height, OutLineColor, FillColor, PenSize, x, y)
 ####################################################################################
 
 def draw_rectangle(OutLineColor, FillColor, PenSize, Height, Width, x, y):
-    # Tạo một đối tượng rùa
-    t = turtle.Turtle()
-    t.hideturtle()
     # Thiết lập các thuộc tính hình thức
     t.color(OutLineColor)
     t.fillcolor(FillColor)
@@ -65,47 +63,98 @@ def draw_rectangle(OutLineColor, FillColor, PenSize, Height, Width, x, y):
     # Kết thúc tô màu
     t.end_fill()
     
-    # Kết thúc chương trình
-    # turtle.done()
+#Hàm vẽ cây thông
+def draw_pine(width_tree,height_tree,x,y):#x, y là toạ độ gốc dưới bên trái của cây thông (điểm xám thấp nhất, bên trái)
+    height_top=height_tree//11
+    height_middle=height_top*2
+    height_bottom=height_top*3
+    height_root=height_top*5
+    width_root_top=height_top
+    width_root_bottom=int(width_tree*0.4)
+    width_bottom=width_tree
+    width_middle=int(width_tree*0.8)
+    width_top=int(width_tree*0.6)
+    draw_trapezoid(width_root_bottom, width_root_top, height_root, "#808080", "#808080", 3, x, y) #chân cây thông
+    draw_trapezoid(width_bottom, 0, height_bottom, "#4E6028", "#4E6028", 3, x+width_root_bottom//2-width_bottom//2, y+height_root) # tán dưới
+    draw_trapezoid(width_middle, 0, height_middle, "#76923C", "#76923C", 3, x+width_root_bottom//2-width_middle//2, y+height_root+height_bottom) # tán giữa
+    draw_trapezoid(width_top, 0, height_top, "#C2D59B", "#C2D59B", 3, x+width_root_bottom//2-width_top//2, y+height_root+height_bottom+height_middle) # tán trên
+    
 
-# Sử dụng hàm để vẽ tường và cửa
-draw_rectangle("blue", "white", 3, 150, 250, -150, 0)
-draw_rectangle("brown", "white", 3, 90, 50, -50, -50)
+#Hàm vẽ nhà
+def draw_house(line_house,fill_house,line_size,height,width, x, y,line_door,fill_door):
+    # Sử dụng hàm để vẽ tường và cửa
+    #draw_rectangle("blue", "white", 3, 150, 250, -150, 0)
+    draw_rectangle(line_house, fill_house, line_size, height, width, x, y)
+    #draw_rectangle("brown", "white", 3, 90, 50, -50, -50)
+    height_door=int(height*0.6)
+    width_door=int(width*0.2)
+    x_door=x + (width-width_door)//2
+    y_door=y - (height-height_door)*5//6
+    draw_rectangle(line_door, fill_door, line_size, height_door, width_door, x_door, y_door)
 
-# Vẽ ống khói
-draw_rectangle("blue", "white", 2, 50, 30, -30, 65)
+    # Vẽ ống khói
+    y_chimney=y+int(height*0.2)
+    draw_rectangle(line_house, "grey", line_size, -1*height_door//2, width_door//2, x_door, y_chimney)
 
-#vẽ mái nhà
-turtle.hideturtle()
-turtle.penup()
-#turtle.goto(-63,150)
-turtle.goto(-150, 0)
-turtle.pendown()
-turtle.pensize(3)
-turtle.fillcolor("white")
-turtle.pencolor("blue")
-turtle.begin_fill()
-#turtle.circle(-100,steps=3)
-turtle.left(45)
-turtle.forward(115)
-turtle.right(90)
-turtle.forward(115)
-turtle.end_fill()
+    #vẽ mái nhà
+    ###Chuẩn bị
+    # t.pensize(3)
+    t.pencolor(line_house)
+    # t.fillcolor(fill_house)
+    t.fillcolor("brown")
 
-#vẽ khói
-draw_rectangle("gray", "gray", 1, 50, 1, -5, 130)
-draw_rectangle("gray", "gray", 1, 30, 1, -20, 115)
+    ###Đưa bút vào vị trí
+    t.penup()
+    t.goto(x, y)
 
-# Vẽ cây thông lớn
-draw_trapezoid(50, 30, 90, "#808080", "#808080", 3, 175, -250) #chân cây thông
-draw_trapezoid(160, 0, 70, "#4E6028", "#4E6028", 3, 120, -160) # tán dưới
-draw_trapezoid(120, 0, 50, "#76923C", "#76923C", 3, 140, -100) # tán giữa
-draw_trapezoid(100, 0, 30, "#C2D59B", "#C2D59B", 3, 150, -53) # tán trên
+    ###Bắt đầu vẽ mái nhà
+    t.pendown()
+    t.begin_fill()
+    t.left(45)
+    t.forward(int(width*0.46))
+    t.right(90)
+    t.forward(int(width*0.46))
+    t.left(45)
+    t.end_fill()
 
-# vẽ cây thông nhỏ
-draw_trapezoid(30, 20, 65, "#808080", "#808080", 3, -210, -160) #chân cây thông
-draw_trapezoid(80, 0, 35, "#4E6028", "#4E6028", 3, -235, -95) # tán dưới
-draw_trapezoid(60, 0, 25, "#76923C", "#76923C", 3, -225, -65) # tán giữa
-draw_trapezoid(40, 0, 15, "#C2D59B", "#C2D59B", 3, -215, -40) # tán trên
+    #vẽ khói
+    draw_rectangle("gray", "gray", 1, -1*height_door//2, 1, x_door+(width_door//2)*8//10,10+y_chimney+height_door//2)
+    draw_rectangle("gray", "white", 1, -1*height_door//3, 1,x_door + width_door//10      ,10+y_chimney+height_door//2)
+
+def dat_con_rua(rua,x,y):
+    rua.hideturtle()
+    rua.penup()
+    rua.goto(x,y)
+    rua.pendown()
+#Vẽ mặt trời
+def draw_sun(x,y):
+    #dat_con_rua(t,215,135)
+    dat_con_rua(t,x,y)
+    t.color("red","yellow")
+    t.pensize(5)
+    t.begin_fill()
+    t.circle(50)
+    t.end_fill()
+    t.color("black")
+#################################################################################
+#Bắt đầu main
+#################################################################################
+ngang=40;cao=60;toa_do_x=-300;toa_do_y=210
+for row in range(6):
+    ngang+=3*row
+    cao+=6*row
+    toa_do_x=-300+40*(row%2)
+    for tree in range(7-row):
+        draw_pine(ngang,cao,toa_do_x, toa_do_y)
+        toa_do_x+=ngang+20
+    toa_do_y-=cao
+#Vẽ nhà
+draw_house("blue", "#00A2E8", 3, 150, 250, -70, 0,"red", "#C3C3C3")
+#draw_pine(ngang,cao,toa_do_x, toa_do_y+cao);
+draw_pine(160,240,185,-250)
+draw_sun(215,135)
+#################################################################################
+#Kết thúc main
+#################################################################################
 # Kết thúc chương trình
 turtle.done()
